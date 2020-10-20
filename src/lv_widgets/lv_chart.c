@@ -1200,10 +1200,11 @@ static void draw_series_line(lv_obj_t * chart, const lv_area_t * series_area, co
                 point_area.y2 = point_area.y1 + point_radius;
                 point_area.y1 -= point_radius;
 
-                if(ser->points[p_act] != LV_CHART_POINT_DEF) {
-                    /*Don't limit to `series_mask` to get full circles on the ends*/
-                    lv_draw_rect(&point_area, clip_area, &point_dsc);
-                }
+                /* Draw a dot at the next valid point[x+1], after an invalid point[x] = LV_CHART_POINT_DEF */
+                //if(ser->points[p_act] != LV_CHART_POINT_DEF) {
+                /*Don't limit to `series_mask` to get full circles on the ends*/
+                lv_draw_rect(&point_area, clip_area, &point_dsc);
+                //}
             }
 
             p_prev = p_act;
